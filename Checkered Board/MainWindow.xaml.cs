@@ -42,10 +42,10 @@ namespace Checkered_Board
         public MainWindow()
         {
             InitializeComponent();
-            drawSquare();//call drawSquare()
+            drawBoard();//call drawBoard()
         }
 
-        private void drawSquare()
+        private void drawBoard()
         {
             //the double for loop is used because it's what allow multiple rows to be drawn
             //next line loops through row
@@ -74,13 +74,31 @@ namespace Checkered_Board
 
                         checkeredBoard.Children.Add(square);
                     }
+                    //next if statement does the same thing but for draws circles instead
+                    if (grid[arrayIndex] == 0)
+                    {
+                        Ellipse circle = new Ellipse();
+                        circle.Stroke = new SolidColorBrush(Colors.Blue);
+                        //except the next line just makes the outline thicker
+                        circle.StrokeThickness = 2;
+                        circle.Fill = new SolidColorBrush(Colors.Yellow);
+                        circle.Width = TILE_W;
+                        circle.Height = TILE_H;
+
+                        //also rememeber that the follow refer to left and top of the circle not the center
+                        //*Still needs to figure out how to use arc segment which may prove better for drawing circles the way I to*
+                        Canvas.SetLeft(circle, TILE_W * eachCol);
+                        Canvas.SetTop(circle, TILE_H * eachRow);
+
+                        checkeredBoard.Children.Add(circle);
+                    }
                 }
             }
         }
 
         private int rowColToArrayIndex(int col, int row)
         {
-            /*method takes eachCol and eachRow from drawSquare() to return an index. 
+            /*method takes eachCol and eachRow from drawBoard() to return an index. 
              * For example, the first time it will return 0 and the second time it will return 1.
              */
             return col + GRID_COLS * row;
