@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400">
     <Grid>
-        <Canvas Background="Black" Width="400" Height="400" x:Name="checkeredBoard"/>
+        <Canvas Background="Black" Width="400" Height="400" x:Name="checkeredBoard" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>
